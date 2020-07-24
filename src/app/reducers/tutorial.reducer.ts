@@ -14,7 +14,6 @@ const initialState: Tutorial[] = [{
 let rem: Tutorial[];
 
 export function reducer(state: Tutorial[] = initialState, action: TutorialActions.Actions) {
-  console.log(action.payload);
   switch (action.type) {
     case  TutorialActions.ADD_TUTORIAL:
       return [...state, action.payload]; // spread operator to add new data to origin al value
