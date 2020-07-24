@@ -5,6 +5,7 @@ import {AppState} from "../app.state";
 import {Store} from "@ngrx/store";
 import * as TutorialActions from './../actions/tutorial.actions';
 
+
 @Component({
   selector: 'app-read',
   templateUrl: './read.component.html',
@@ -12,9 +13,12 @@ import * as TutorialActions from './../actions/tutorial.actions';
 })
 export class ReadComponent implements OnInit {
 
+
   tutorials: Observable<Tutorial[]>;
 
   constructor(private store: Store<AppState>) {
+
+    // noinspection TypeScriptValidateTypes
     this.tutorials = store.select('tutorial');
     console.log(this.tutorials);
   }
