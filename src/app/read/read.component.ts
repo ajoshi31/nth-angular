@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs/index";
 import {Tutorial} from "../models/tutorial.model";
 import {AppState} from "../app.state";
-import {Store} from "@ngrx/store";
+import {select, Store} from "@ngrx/store";
 import * as TutorialActions from './../actions/tutorial.actions';
 
 
@@ -19,7 +19,7 @@ export class ReadComponent implements OnInit {
   constructor(private store: Store<AppState>) {
 
     // noinspection TypeScriptValidateTypes
-    this.tutorials = store.select('tutorial');
+    this.tutorials = store.pipe(select('tutorial'));
     console.log(this.tutorials);
   }
 
