@@ -14,13 +14,13 @@ import * as TutorialActions from './../actions/tutorial.actions';
 export class ReadComponent implements OnInit {
 
 
-  tutorials: Observable<Tutorial[]>;
+  tutorials$: Observable<Tutorial[]>;
 
   constructor(private store: Store<AppState>) {
 
     // noinspection TypeScriptValidateTypes
-    this.tutorials = store.pipe(select('tutorial'));
-    console.log(this.tutorials);
+    this.tutorials$ = store.pipe(select('tutorial'));
+    console.log(this.tutorials$);
   }
 
   ngOnInit(): void {
