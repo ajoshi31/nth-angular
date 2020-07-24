@@ -10,10 +10,16 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {StoreModule} from "@ngrx/store";
+import {reducer} from "./reducers/tutorial.reducer";
+import {ReadComponent} from './read/read.component';
+import {CreateComponent} from './create/create.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReadComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +30,10 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    StoreModule.forRoot({
+      tutorial: reducer
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

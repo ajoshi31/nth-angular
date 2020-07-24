@@ -1,0 +1,21 @@
+import {Action} from '@ngrx/store'
+import {Tutorial} from '../models/tutorial.model'
+import * as TutorialActions from './../actions/tutorial.actions'
+
+// This data can be derived from api
+const initialState: Tutorial[] = [{
+  name: 'Initial Tutorial',
+  url: 'http://google.com'
+}, {
+  name: 'second Tutorial',
+  url: 'http://google.com'
+}];
+
+export function reducer(state: Tutorial[] = initialState, action: TutorialActions.Actions) {
+  switch (action.type) {
+    case  TutorialActions.ADD_TUTORIAL:
+      return [...state, action.payload]; // spread operator to add new data to origin al value
+    default:
+      return state;
+  }
+}
