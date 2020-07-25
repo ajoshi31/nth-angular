@@ -1,5 +1,6 @@
 import {Tutorial} from '../models/tutorial.model'
 import * as TutorialActions from './../actions/tutorial.actions'
+import {TutorialState} from "../../app.state";
 
 const initialState: Tutorial[] = [{
   name: 'Initial Tutorial',
@@ -11,19 +12,27 @@ const initialState: Tutorial[] = [{
 
 let rem: Tutorial[];
 
-export function tutorialReducer(state: Tutorial[] = initialState, action: TutorialActions.Actions) {
+export function tutorialReducer(state: Tutorial[] = initialState, action: TutorialActions.Actions): TutorialState {
   switch (action.type) {
     case  TutorialActions.ADD_TUTORIAL:
-      return [...state, action.payload]; // spread operator to add new data to origin al value
+      return {
+        tutorial: [...state, action.payload]
+      }; // spread operator to add new data to origin al value
     case TutorialActions.REMOVE_TUTORIAL: {
       const index: number = <number>action.payload;
       if (index !== -1) {
         rem = state.filter((_, i) => i !== index);
-        return rem;
+        return {
+          tutorial: rem
+        };
       }
-      return state;
+      return {
+        tutorial: state
+      };
     }
     default:
-      return state;
+      return {
+        tutorial: state
+      };
   }
 }

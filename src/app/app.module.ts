@@ -13,8 +13,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {StoreModule} from "@ngrx/store";
 import {ReadComponent} from './component/read/read.component';
 import {CreateComponent} from './component/create/create.component';
-import {tutorialReducer} from "./store/reducers/tutorial.reducer";
-import {counterReducer} from "./store/reducers/counter.reducer";
+import {reducers} from "./store/reducers/index";
 import {CounterComponent} from './component/counter/counter.component';
 
 @NgModule({
@@ -34,10 +33,7 @@ import {CounterComponent} from './component/counter/counter.component';
     MatButtonModule,
     MatCardModule,
     MatProgressSpinnerModule,
-    StoreModule.forRoot({
-      tutorial: tutorialReducer,
-      counter: counterReducer
-    })
+    StoreModule.forRoot(reducers)
   ],
   providers: [],
   bootstrap: [AppComponent]
