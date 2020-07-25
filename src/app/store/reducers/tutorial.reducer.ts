@@ -1,38 +1,41 @@
 import {Tutorial} from '../models/tutorial.model'
 import * as TutorialActions from './../actions/tutorial.actions'
 import {TutorialState} from "../../app.state";
+import {createFeatureSelector, createSelector} from "@ngrx/store";
 
-const initialState: Tutorial[] = [{
-  name: 'Initial Tutorial',
-  url: 'http://google.com'
-}, {
-  name: 'second Tutorial',
-  url: 'http://google.com'
-}];
+const initialState: TutorialState = {
+  tutorial: [{
+    name: 'Initial Tutorial',
+    url: 'http://google.com'
+  }, {
+    name: 'second Tutorial',
+    url: 'http://google.com'
+  }]
+};
 
 let rem: Tutorial[];
 
-export function tutorialReducer(state: Tutorial[] = initialState, action: TutorialActions.Actions): TutorialState {
+export function tutorialReducer(tutorialState: TutorialState = initialState, action: TutorialActions.Actions): TutorialState {
   switch (action.type) {
     case  TutorialActions.ADD_TUTORIAL:
       return {
-        tutorial: [...state, action.payload]
-      }; // spread operator to add new data to origin al value
+        tutorial: [...tutorialState.tutorial, action.payload]
+      };
     case TutorialActions.REMOVE_TUTORIAL: {
       const index: number = <number>action.payload;
       if (index !== -1) {
-        rem = state.filter((_, i) => i !== index);
+        rem = tutorialState.tutorial.filter((_, i) => i !== index);
         return {
           tutorial: rem
         };
       }
-      return {
-        tutorial: state
-      };
+      return tutorialState;
     }
     default:
-      return {
-        tutorial: state
-      };
+      return tutorialState;
   }
 }
+
+// Selector
+export const selectTutorialState = (state) => state.tutorialState;
+export const selectTutorial = createSelector(selectTutorialState, (state: TutorialState) => state.tutorial);

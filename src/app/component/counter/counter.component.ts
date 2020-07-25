@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CounterState} from "../../app.state";
 import {select, Store} from "@ngrx/store";
 import * as CounterAction from './../../store/actions/counter.actions';
+import {selectCounter} from "../../store/reducers/counter.reducer";
 
 @Component({
   selector: 'app-counter',
@@ -14,7 +15,7 @@ export class CounterComponent implements OnInit {
 
   constructor(private store: Store<CounterState>) {
     // noinspection TypeScriptValidateTypes
-    this.store.pipe(select('counter')).subscribe(counter => {
+    this.store.pipe(select(selectCounter)).subscribe(counter => {
       this.counter = counter.counter;
     });
   }
