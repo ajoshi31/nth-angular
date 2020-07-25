@@ -37,5 +37,5 @@ export function tutorialReducer(tutorialState: TutorialState = initialState, act
 }
 
 // Selector
-export const selectTutorialState = (state) => state.tutorialState;
+export const selectTutorialState = (b) => b.tutorialState;
 export const selectTutorial = createSelector(selectTutorialState, (state: TutorialState) => state.tutorial);
