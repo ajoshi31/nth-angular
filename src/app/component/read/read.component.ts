@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs/index";
-import {Tutorial} from "../models/tutorial.model";
-import {AppState} from "../app.state";
+
+import {TutorialState} from "../../app.state";
 import {select, Store} from "@ngrx/store";
-import * as TutorialActions from './../actions/tutorial.actions';
+import * as TutorialActions from './../../store/actions/tutorial.actions';
+import {Tutorial} from "../../store/models/tutorial.model";
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ReadComponent implements OnInit {
 
   tutorials$: Observable<Tutorial[]>;
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<TutorialState>) {
 
     // noinspection TypeScriptValidateTypes
     this.tutorials$ = store.pipe(select('tutorial'));

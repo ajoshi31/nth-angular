@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {AppState} from "../app.state";
-import * as TutorialActions from './../actions/tutorial.actions';
+import {TutorialState} from "../../app.state";
+import * as TutorialActions from './../../store/actions/tutorial.actions';
 import {Store} from "@ngrx/store";
 
 @Component({
@@ -10,7 +10,7 @@ import {Store} from "@ngrx/store";
 })
 export class CreateComponent implements OnInit {
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<TutorialState>) {
   }
 
   addTutorial(name, url) {
