@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class TodoService {
 
-  apiUrl = "http://5fba646b0f07.ngrok.io/todos";
+  apiUrl = "http://localhost:4000/todos";
 
   constructor(private http: HttpClient) {
   }

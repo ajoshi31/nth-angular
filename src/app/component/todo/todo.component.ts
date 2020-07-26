@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from "rxjs/index";
+import {ITodo} from "../../models/todo";
+import {IAppState} from "../../store/state/index";
+import {select, Store} from "@ngrx/store";
+import {selectTodoList} from "../../store/selectors/todo.selector";
+import {GetTodos, RemoveTodo, ToggleDone} from "../../store/actions/todo.actions";
 
 @Component({
   selector: 'app-todo',
@@ -7,9 +13,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoComponent implements OnInit {
 
-  constructor() { }
+  @Input() todo: ITodo;
 
-  ngOnInit(): void {
+  constructor(private store: Store<IAppState>) {
   }
 
+  ngOnInit() {
+    console.log("Asdasdasd", this.todo);
+  }
+
+  delTutorial(id) {
+    this.store.dispatch(new RemoveTodo(id))
+  }
+
+  toggleTodo(id, status) {
+    this.store.dispatch(new ToggleDone({id: id, status: !status}))
+  }
 }

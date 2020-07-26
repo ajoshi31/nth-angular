@@ -12,7 +12,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
-import {AddtodoComponent} from './component/addtodo/addtodo.component';
+import {AddTodoComponent} from './component/addtodo/addtodo.component';
 import {ListTodoComponent} from './component/listtodo/listtodo.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {FormsModule} from "@angular/forms";
@@ -27,7 +27,7 @@ import {TodoEffects} from "./store/effects/todo.effects";
 @NgModule({
   declarations: [
     AppComponent,
-    AddtodoComponent,
+    AddTodoComponent,
     ListTodoComponent,
     TodoComponent
   ],

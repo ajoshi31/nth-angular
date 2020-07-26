@@ -5,32 +5,36 @@ import {ITodo} from "../../models/todo";
 import {Observable, Subscription} from "rxjs/index";
 import {selectTodoList} from "../../store/selectors/todo.selector";
 import {IAppState} from "../../store/state/index";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-addtodo',
   templateUrl: './addtodo.component.html',
   styleUrls: ['./addtodo.component.scss']
 })
-export class AddtodoComponent implements OnInit {
+export class AddTodoComponent implements OnInit {
 
-  nextId: number;
+  formData: ITodo = new ITodo();
 
   constructor(private store: Store<IAppState>) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
-  addTodo(title, desc) {
+  addTodo(form: NgForm) {
 
+    console.log(form);
+    form.value.status = false;
     // The id has to be generated after getting the success from API here we are just using state management check
     // and create random id at client side
-
     //noinspection TypeScriptValidateTypes
     this.store.pipe(select(selectTodoList)).subscribe(data => {
-      this.nextId = data.length + 1;
+      form.value.id = data.length + 1;
     }).unsubscribe();
-    this.store.dispatch(new TodoActions.AddTodo({id: this.nextId, title: title, desc: desc, status: false}));
+
+    this.store.dispatch(new TodoActions.AddTodo(form.value));
+    form.resetForm(new ITodo())
   }
 
 }

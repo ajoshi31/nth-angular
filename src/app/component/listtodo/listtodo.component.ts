@@ -4,7 +4,7 @@ import {select, Store} from "@ngrx/store";
 import {selectTodoList} from "../../store/selectors/todo.selector";
 import {IAppState} from "../../store/state/index";
 import {ITodo} from "../../models/todo";
-import {GetTodos, RemoveTodo} from "../../store/actions/todo.actions";
+import {GetTodos, RemoveTodo, ToggleDone} from "../../store/actions/todo.actions";
 
 
 @Component({
@@ -23,11 +23,6 @@ export class ListTodoComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new GetTodos());
-  }
-
-  delTutorial(id) {
-    this.store.dispatch(new RemoveTodo(id))
-
   }
 
 }

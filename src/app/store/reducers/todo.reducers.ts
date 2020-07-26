@@ -33,9 +33,26 @@ export function TodoReducer(state: IToDoState = initialState, action: TodoAction
       }
       return state;
     }
+    case TodoActions.TodoActionTypes.TOGGLE_DONE:
+      return <IToDoState>{
+        ...state,
+        todos:
+          state.todos.map(item => {
+            return item.id === action['payload'].id
+              ? {...item, ...{status: action['payload'].status}} : item;
+          })
+      };
+    case TodoActions.TodoActionTypes.UPDATE_TODO:
+      return <IToDoState>{
+        ...state,
+        todos:
+          state.todos.map(item => {
+            return item.id === action['payload'].id
+              ? {...item, ...{status: action['payload'].status}} : item;
+          })
+      };
     default:
       return state;
   }
 }
-
 
