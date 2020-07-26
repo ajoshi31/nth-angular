@@ -1,5 +1,5 @@
 <div class="p-12">
-  <h2>ADD - EDIT YOUR TODO</h2>
+  <h2>{{isEditing ? 'EDIT' : 'ADD'}} YOUR TODO</h2>
   <form (ngSubmit)="addTodo(f)" id="ngForm" #f="ngForm" novalidate>
     <mat-card>
       <div fxFlexFill>
@@ -22,7 +22,7 @@
         <div fxFlex="100" fxlayout="row" fxLayoutAlign="end center">
           <button form="ngForm" [disabled]="f.invalid" color="accent"
                   mat-fab aria-label="Example icon button with a delete icon">
-            <mat-icon>add</mat-icon>
+            <mat-icon>{{isEditing ? 'edit' : 'add'}}</mat-icon>
           </button>
         </div>
       </div>

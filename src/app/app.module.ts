@@ -24,6 +24,7 @@ import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {TodoEffects} from "./store/effects/todo.effects";
 import {OrderModule} from "ngx-order-pipe";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {OrderModule} from "ngx-order-pipe";
     MatFormFieldModule,
     FlexLayoutModule,
     MatInputModule,
+    MatSnackBarModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([TodoEffects]),
     OrderModule

@@ -3,13 +3,13 @@
     <h3 class="mat-title">{{todo.title}}</h3>
     <p class="text-muted">{{todo.desc}}
     </p>
-    <p>{{todo.status}}</p>
     <div fxlayout="row" fxLayoutAlign="end center">
-      <button class="shrink-x" mat-stroked-button color="primary">EDIT</button>
+      <button *ngIf="!todo.status" (click)="editTodo(todo)" class="shrink-x" mat-stroked-button color="primary">EDIT
+      </button>
       <button (click)="toggleTodo(todo.id, todo.status)" class="shrink-x" mat-stroked-button color="accent">
         {{ todo.status ? 'Completed' : 'Complete Todo'}}
       </button>
-      <button (click)="delTutorial(todo.id)" class="shrink-x" mat-stroked-button color="warn">DELETE</button>
+      <button (click)="delTodo(todo.id)" class="shrink-x" mat-stroked-button color="warn">DELETE</button>
     </div>
   </mat-card-content>
 </mat-card>

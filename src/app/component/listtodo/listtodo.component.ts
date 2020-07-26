@@ -4,8 +4,7 @@ import {select, Store} from "@ngrx/store";
 import {selectTodoList} from "../../store/selectors/todo.selector";
 import {IAppState} from "../../store/state/index";
 import {ITodo} from "../../models/todo";
-import {GetTodos, RemoveTodo, ToggleDone} from "../../store/actions/todo.actions";
-
+import {GetTodos} from "../../store/actions/todo.actions";
 
 @Component({
   selector: 'app-listtodo',

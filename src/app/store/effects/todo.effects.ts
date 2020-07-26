@@ -6,7 +6,7 @@ import {switchMap} from 'rxjs/operators';
 
 import {IAppState} from '../state/index';
 import {
-  GetTodos, GetTodoSuccess, TodoActionTypes
+  GetTodos, GetTodosSuccess, TodoActionTypes
 } from '../actions/todo.actions';
 
 import {TodoService} from "../../services/todo.service";
@@ -21,7 +21,7 @@ export class TodoEffects {
     ofType<GetTodos>(<string>TodoActionTypes.LOAD_TODOS),
     switchMap(() => this._todoService.getTodos()),
     switchMap(function (item: ITodoHttp) {
-      return of(new GetTodoSuccess(item));
+      return of(new GetTodosSuccess(item));
     })
   );
 
