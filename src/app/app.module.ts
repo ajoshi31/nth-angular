@@ -21,6 +21,8 @@ import {TodoComponent} from './component/todo/todo.component';
 import {TodoService} from "./services/todo.service";
 import {reducers} from "./store/reducers/index";
 import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
+import {TodoEffects} from "./store/effects/todo.effects";
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import {StoreModule} from "@ngrx/store";
     FlexLayoutModule,
     MatInputModule,
     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([TodoEffects]),
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]

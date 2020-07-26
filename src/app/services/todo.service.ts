@@ -4,12 +4,13 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class TodoService {
 
-  apiUrl = "https://jsonplaceholder.typicode.com/todos?_start=0&_limit=3";
+  apiUrl = "http://5fba646b0f07.ngrok.io/todos";
 
   constructor(private http: HttpClient) {
   }
 
   getTodos() {
     return this.http.get(this.apiUrl);
+    return this.http.get('http://localhost:4000/todos');
   }
 }

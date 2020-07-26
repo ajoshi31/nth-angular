@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {ITodo} from '../../models/todo'
+import {ITodoHttp} from "../../models/http-todo";
 
 export enum TodoActionTypes {
   ADD = '[TODO] Add to list',
@@ -18,7 +19,7 @@ export class AddTodo implements Action {
 export class RemoveTodo implements Action {
   readonly type = <string>TodoActionTypes.REMOVE;
 
-  constructor(public payload: ITodo) {
+  constructor(public payload: number) {
   }
 }
 
@@ -29,7 +30,7 @@ export class GetTodos implements Action {
 export class GetTodoSuccess implements Action {
   readonly type = <string>TodoActionTypes.LOAD_TODOS_SUCCESS;
 
-  constructor(public payload: ITodo[]) {
+  constructor(public payload: ITodoHttp) {
   }
 }
 
