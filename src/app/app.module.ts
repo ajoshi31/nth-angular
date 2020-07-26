@@ -23,6 +23,7 @@ import {reducers} from "./store/reducers/index";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
 import {TodoEffects} from "./store/effects/todo.effects";
+import {OrderModule} from "ngx-order-pipe";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import {TodoEffects} from "./store/effects/todo.effects";
     MatInputModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([TodoEffects]),
+    OrderModule
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]

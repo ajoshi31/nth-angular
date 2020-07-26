@@ -5,6 +5,7 @@
     </p>
     <p>{{todo.status}}</p>
     <div fxlayout="row" fxLayoutAlign="end center">
+      <button class="shrink-x" mat-stroked-button color="primary">EDIT</button>
       <button (click)="toggleTodo(todo.id, todo.status)" class="shrink-x" mat-stroked-button color="accent">
         {{ todo.status ? 'Completed' : 'Complete Todo'}}
       </button>

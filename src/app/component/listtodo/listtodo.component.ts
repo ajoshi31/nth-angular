@@ -15,6 +15,7 @@ import {GetTodos, RemoveTodo, ToggleDone} from "../../store/actions/todo.actions
 export class ListTodoComponent implements OnInit {
 
   todoFetched: Observable<ITodo[]>;
+  order: string = 'id';
 
   constructor(private store: Store<IAppState>) {
     //noinspection TypeScriptValidateTypes
