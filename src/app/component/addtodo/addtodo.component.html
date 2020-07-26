@@ -3,19 +3,20 @@
     <div fxFlexFill>
       <mat-form-field appearance="outline" class="full-width-field">
         <mat-label>Enter Title</mat-label>
-        <input matInput placeholder="I want to learn angular" required>
+        <input matInput placeholder="I want to learn angular" required #title>
       </mat-form-field>
     </div>
     <div fxFlexFill>
       <mat-form-field appearance="outline" class="full-width-field">
         <mat-label>Enter Description</mat-label>
-        <input matInput placeholder="Complete basics of ngrx or explore ngxs and akita" required>
+        <input matInput placeholder="Complete basics of ngrx or explore ngxs and akita" #description required>
       </mat-form-field>
     </div>
 
     <div style="margin-bottom:-40px">
       <div fxFlex="100" fxlayout="row" fxLayoutAlign="end center">
-        <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
+                (click)="addTodo(title.value,description.value)">
           <mat-icon>add</mat-icon>
         </button>
       </div>

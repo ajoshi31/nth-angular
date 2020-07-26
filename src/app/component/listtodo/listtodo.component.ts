@@ -1,27 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {TodoService} from "../../services/todo.service";
-import {Subscription} from "rxjs/index";
+import {Observable, Subscription} from "rxjs/index";
+import {select, Store} from "@ngrx/store";
+import {selectTodoList} from "../../store/selectors/todo.selector";
+import {IAppState} from "../../store/state/index";
+import {ITodo} from "../../models/todo";
 
 @Component({
   selector: 'app-listtodo',
   templateUrl: './listtodo.component.html',
   styleUrls: ['./listtodo.component.scss']
 })
-export class ListtodoComponent implements OnInit {
+export class ListTodoComponent implements OnInit {
 
+  todoFetched: Observable<ITodo[]>;
 
-  constructor(private _todoService: TodoService) {
+  constructor(private store: Store<IAppState>) {
+    //noinspection TypeScriptValidateTypes
+    this.todoFetched = store.pipe(select(selectTodoList));
   }
 
-  todos: any;
-  subs: Subscription;
-
   ngOnInit(): void {
-    this.subs = this._todoService.getTodos()
-      .subscribe((res: any) => {
-          this.todos = res;
-        },
-      );
   }
 
 }

@@ -1,30 +1,20 @@
-import {TodoActions, TodoActionTypes} from '../actions/todo.actions';
+import * as TodoActions from '../actions/todo.actions';
 import {IToDoState} from "../state/todo.state";
 
 export const initialState: IToDoState = {
-  todos: [],
-  selectedToDo: null
+  todos: []
 };
 
-export function TodoReducer(state = initialState, action: TodoActions) {
+export function TodoReducer(state: IToDoState = initialState, action: TodoActions.TodoActions): IToDoState {
   switch (action.type) {
-    case TodoActionTypes.LOAD_TODOS_SUCCESS:
+    case TodoActions.TodoActionTypes.ADD:
       return {
         ...state,
-        items: []
+        todos: [...state.todos, action['payload']]
       };
-
-    case TodoActionTypes.ADD:
-      return {
-        ...state
-      };
-
-    case TodoActionTypes.REMOVE:
-      return {
-        ...state,
-      };
-
     default:
       return state;
   }
 }
+
+
