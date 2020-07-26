@@ -19,7 +19,6 @@ export class TodoComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("Asdasdasd", this.todo);
   }
 
   delTutorial(id) {
