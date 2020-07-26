@@ -21,7 +21,7 @@ export class ReadComponent implements OnInit {
 
   constructor(private store: Store<TutorialState>) {
 
-    // noinspection TypeScriptValidateTypes
+    //noinspection TypeScriptValidateTypes
     this.tutorials$ = store.pipe(select(selectTutorial));
   }
 

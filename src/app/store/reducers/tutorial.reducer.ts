@@ -2,6 +2,7 @@ import {Tutorial} from '../models/tutorial.model'
 import * as TutorialActions from './../actions/tutorial.actions'
 import {TutorialState} from "../../app.state";
 import {createFeatureSelector, createSelector} from "@ngrx/store";
+import {AppState} from "index";
 
 const initialState: TutorialState = {
   tutorial: [{
@@ -37,5 +38,9 @@ export function tutorialReducer(tutorialState: TutorialState = initialState, act
 }
 
 // Selector
-export const selectTutorialState = (b) => b.tutorialState;
-export const selectTutorial = createSelector(selectTutorialState, (state: TutorialState) => state.tutorial);
+export const selectTutorialState = (b: AppState) => b.tutorialState;
+
+export const selectTutorial = createSelector(
+  selectTutorialState,
+  (state: TutorialState) => state.tutorial
+);
