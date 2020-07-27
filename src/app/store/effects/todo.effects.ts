@@ -25,6 +25,7 @@ export class TodoEffects {
         return of(new GetTodosSuccess(item));
       }),
       catchError(() => "")
+      // https://medium.com/@andrew_evans/exception-handling-with-ngrx-effects-70ec942e6465
     ))
   );
 
